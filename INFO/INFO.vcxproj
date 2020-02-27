@@ -23,6 +23,7 @@
     <ProjectGuid>{E34B2FF7-0F35-41D1-9567-DAF56A2AF16D}</ProjectGuid>
     <RootNamespace>INFO</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>HW_DynamicArray</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

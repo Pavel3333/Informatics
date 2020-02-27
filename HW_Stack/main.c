@@ -1,8 +1,8 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
 
-// Ñòðóêòóðà ñòýêà
+// Ð¡Ñ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° ÑÑ‚ÑÐºÐ°
 typedef struct {
 	unsigned int size;
 	unsigned int ptr;
@@ -10,28 +10,28 @@ typedef struct {
 	uint64_t* stack;
 } Stack;
 
-// Îáúÿâëåíèå
+// ÐžÐ±ÑŠÑÐ²Ð»ÐµÐ½Ð¸Ðµ
 Stack* init_stack(unsigned int stack_size);
 void push(Stack* stack, unsigned int value);
 uint64_t pop(Stack* stack);
 
 Stack* init_stack(unsigned int stack_size) {
-	// Âûäåëèì ïàìÿòü
+	// Ð’Ñ‹Ð´ÐµÐ»Ð¸Ð¼ Ð¿Ð°Ð¼ÑÑ‚ÑŒ
 	Stack* new_stack = (Stack*)malloc(sizeof(Stack));
 	if (!new_stack) {
 		printf("Unable to allocate the memory for the stack object\n");
 		return NULL;
 	}
 
-	// Ðàçìåñòèëè â ïàìÿòè îáúåêò ñòýêà. Ñàìîå âðåìÿ âûäåëèòü ïàìÿòü äëÿ ñòýêà
+	// Ð Ð°Ð·Ð¼ÐµÑÑ‚Ð¸Ð»Ð¸ Ð² Ð¿Ð°Ð¼ÑÑ‚Ð¸ Ð¾Ð±ÑŠÐµÐºÑ‚ ÑÑ‚ÑÐºÐ°. Ð¡Ð°Ð¼Ð¾Ðµ Ð²Ñ€ÐµÐ¼Ñ Ð²Ñ‹Ð´ÐµÐ»Ð¸Ñ‚ÑŒ Ð¿Ð°Ð¼ÑÑ‚ÑŒ Ð´Ð»Ñ ÑÑ‚ÑÐºÐ°
 	new_stack->stack = (uint64_t*)malloc(stack_size * sizeof(uint64_t));
 	if (!new_stack->stack) {
 		printf("Unable to allocate the memory for the stack\n");
-		free(new_stack); // Íå çàáóäåì î÷èñòèòü ïàìÿòü, èíà÷å áóäåò åå óòå÷êà
+		free(new_stack); // ÐÐµ Ð·Ð°Ð±ÑƒÐ´ÐµÐ¼ Ð¾Ñ‡Ð¸ÑÑ‚Ð¸Ñ‚ÑŒ Ð¿Ð°Ð¼ÑÑ‚ÑŒ, Ð¸Ð½Ð°Ñ‡Ðµ Ð±ÑƒÐ´ÐµÑ‚ ÐµÐµ ÑƒÑ‚ÐµÑ‡ÐºÐ°
 		return NULL;
 	}
 
-	// Çàäàåì çíà÷åíèÿ
+	// Ð—Ð°Ð´Ð°ÐµÐ¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ
 	new_stack->size = stack_size;
 	new_stack->ptr = 0;
 
@@ -53,7 +53,7 @@ void push(Stack* stack, uint64_t value) {
 		return;
 	}
 
-	// Ñíà÷àëà ðàçìåñòèì çíà÷åíèå íà âåðøèíå ñòåêà (stack->stack[stack->ptr]), à ïîòîì ïðèáàâèì stack->ptr
+	// Ð¡Ð½Ð°Ñ‡Ð°Ð»Ð° Ñ€Ð°Ð·Ð¼ÐµÑÑ‚Ð¸Ð¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð½Ð° Ð²ÐµÑ€ÑˆÐ¸Ð½Ðµ ÑÑ‚ÐµÐºÐ° (stack->stack[stack->ptr]), Ð° Ð¿Ð¾Ñ‚Ð¾Ð¼ Ð¿Ñ€Ð¸Ð±Ð°Ð²Ð¸Ð¼ stack->ptr
 	stack->stack[stack->ptr++] = value;
 }
 
@@ -72,7 +72,7 @@ uint64_t pop(Stack* stack) {
 		return 0;
 	}
 
-	// Ñíà÷àëà óìåíüøèì stack->ptr, à ïîòîì âîçüìåì èç ñòåêà çíà÷åíèå
+	// Ð¡Ð½Ð°Ñ‡Ð°Ð»Ð° ÑƒÐ¼ÐµÐ½ÑŒÑˆÐ¸Ð¼ stack->ptr, Ð° Ð¿Ð¾Ñ‚Ð¾Ð¼ Ð²Ð¾Ð·ÑŒÐ¼ÐµÐ¼ Ð¸Ð· ÑÑ‚ÐµÐºÐ° Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ
 	return stack->stack[--(stack->ptr)];
 }
 
