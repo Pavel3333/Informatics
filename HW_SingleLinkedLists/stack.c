@@ -1,4 +1,4 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
 
@@ -7,12 +7,12 @@ typedef struct node {
     struct node* next;
 } Node;
 
-// Ñòðóêòóðà ñòýêà íà îäíîñâÿçíîì ñïèñêå
+// Ð¡Ñ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° ÑÑ‚ÑÐºÐ° Ð½Ð° Ð¾Ð´Ð½Ð¾ÑÐ²ÑÐ·Ð½Ð¾Ð¼ ÑÐ¿Ð¸ÑÐºÐµ
 typedef struct {
-    Node* head; // Ïåðâûé ýëåìåíò ñòåêà
+    Node* head; // ÐŸÐµÑ€Ð²Ñ‹Ð¹ ÑÐ»ÐµÐ¼ÐµÐ½Ñ‚ ÑÑ‚ÐµÐºÐ°
 } Stack;
 
-// Îáúÿâëåíèå
+// ÐžÐ±ÑŠÑÐ²Ð»ÐµÐ½Ð¸Ðµ
 Stack* init_stack();
 void push(Stack* stack, int value);
 int pop(Stack* stack);
@@ -20,14 +20,14 @@ unsigned int stack_size(Stack* stack);
 void fini_stack(Stack* stack);
 
 Stack* init_stack() {
-    // Âûäåëèì ïàìÿòü
+    // Ð’Ñ‹Ð´ÐµÐ»Ð¸Ð¼ Ð¿Ð°Ð¼ÑÑ‚ÑŒ
     Stack* new_stack = (Stack*)malloc(sizeof(Stack));
     if (!new_stack) {
         printf("Unable to allocate the memory for the stack object\n");
         return NULL;
     }
 
-    // Ñòýê èçíà÷àëüíî ïóñò
+    // Ð¡Ñ‚ÑÐº Ð¸Ð·Ð½Ð°Ñ‡Ð°Ð»ÑŒÐ½Ð¾ Ð¿ÑƒÑÑ‚
     new_stack->head = NULL;
 
     return new_stack;

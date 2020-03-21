@@ -1,9 +1,9 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 #include <stdint.h>
 #include <string.h>
 #include <stdlib.h>
 
-// Ñòðóêòóðà ñòýêà
+// Ð¡Ñ‚Ñ€ÑƒÐºÑ‚ÑƒÑ€Ð° ÑÑ‚ÑÐºÐ°
 typedef struct {
 	unsigned int size;
 	unsigned int start;
@@ -12,7 +12,7 @@ typedef struct {
 	uint64_t* queue;
 } Queue;
 
-// Îáúÿâëåíèå
+// ÐžÐ±ÑŠÑÐ²Ð»ÐµÐ½Ð¸Ðµ
 Queue* init_queue(unsigned int queue_size);
 
 void     push(Queue* queue, uint64_t value);
@@ -20,22 +20,22 @@ uint64_t pop(Queue* queue);
 
 
 Queue* init_queue(unsigned int queue_size) {
-	// Âûäåëèì ïàìÿòü
+	// Ð’Ñ‹Ð´ÐµÐ»Ð¸Ð¼ Ð¿Ð°Ð¼ÑÑ‚ÑŒ
 	Queue* new_queue = (Queue*)malloc(sizeof(Queue));
 	if (!new_queue) {
 		printf("Unable to allocate the memory for the queue object\n");
 		return NULL;
 	}
 
-	// Ðàçìåñòèëè â ïàìÿòè îáúåêò ñòýêà. Ñàìîå âðåìÿ âûäåëèòü ïàìÿòü äëÿ ñòýêà
+	// Ð Ð°Ð·Ð¼ÐµÑÑ‚Ð¸Ð»Ð¸ Ð² Ð¿Ð°Ð¼ÑÑ‚Ð¸ Ð¾Ð±ÑŠÐµÐºÑ‚ ÑÑ‚ÑÐºÐ°. Ð¡Ð°Ð¼Ð¾Ðµ Ð²Ñ€ÐµÐ¼Ñ Ð²Ñ‹Ð´ÐµÐ»Ð¸Ñ‚ÑŒ Ð¿Ð°Ð¼ÑÑ‚ÑŒ Ð´Ð»Ñ ÑÑ‚ÑÐºÐ°
 	new_queue->queue = (uint64_t*)malloc(queue_size * sizeof(uint64_t));
 	if (!new_queue->queue) {
 		printf("Unable to allocate the memory for the queue\n");
-		free(new_queue); // Íå çàáóäåì î÷èñòèòü ïàìÿòü, èíà÷å áóäåò åå óòå÷êà
+		free(new_queue); // ÐÐµ Ð·Ð°Ð±ÑƒÐ´ÐµÐ¼ Ð¾Ñ‡Ð¸ÑÑ‚Ð¸Ñ‚ÑŒ Ð¿Ð°Ð¼ÑÑ‚ÑŒ, Ð¸Ð½Ð°Ñ‡Ðµ Ð±ÑƒÐ´ÐµÑ‚ ÐµÐµ ÑƒÑ‚ÐµÑ‡ÐºÐ°
 		return NULL;
 	}
 
-	// Çàäàåì çíà÷åíèÿ
+	// Ð—Ð°Ð´Ð°ÐµÐ¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ñ
 	new_queue->size = queue_size;
 	new_queue->start = 0;
 	new_queue->end = 0;
@@ -61,7 +61,7 @@ void push(Queue* queue, uint64_t value) {
 			printf("Unable to push value: queue is full\n");
 			return;
 		}
-		else { // Ñäâèã çíà÷åíèé â íà÷àëî î÷åðåäè
+		else { // Ð¡Ð´Ð²Ð¸Ð³ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ð¹ Ð² Ð½Ð°Ñ‡Ð°Ð»Ð¾ Ð¾Ñ‡ÐµÑ€ÐµÐ´Ð¸
 			memcpy(queue->queue, queue->queue + queue->start, queue->end - queue->start);
 
 			queue->end -= queue->start;
@@ -69,7 +69,7 @@ void push(Queue* queue, uint64_t value) {
 		}
 	}
 
-	// Ñíà÷àëà ðàçìåñòèì çíà÷åíèå â êîíöå î÷åðåäè (queue->queue[queue->end]), à ïîòîì ïðèáàâèì queue->end
+	// Ð¡Ð½Ð°Ñ‡Ð°Ð»Ð° Ñ€Ð°Ð·Ð¼ÐµÑÑ‚Ð¸Ð¼ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ Ð² ÐºÐ¾Ð½Ñ†Ðµ Ð¾Ñ‡ÐµÑ€ÐµÐ´Ð¸ (queue->queue[queue->end]), Ð° Ð¿Ð¾Ñ‚Ð¾Ð¼ Ð¿Ñ€Ð¸Ð±Ð°Ð²Ð¸Ð¼ queue->end
 	queue->queue[queue->end++] = value;
 }
 
@@ -88,7 +88,7 @@ uint64_t pop(Queue* queue) {
 		return 0;
 	}
 
-	// Ñíà÷àëà âîçüìåì èç íà÷àëà î÷åðåäè çíà÷åíèå, ïîòîì óâåëè÷èì ïîçèöèþ íà÷àëà î÷åðåäè
+	// Ð¡Ð½Ð°Ñ‡Ð°Ð»Ð° Ð²Ð¾Ð·ÑŒÐ¼ÐµÐ¼ Ð¸Ð· Ð½Ð°Ñ‡Ð°Ð»Ð° Ð¾Ñ‡ÐµÑ€ÐµÐ´Ð¸ Ð·Ð½Ð°Ñ‡ÐµÐ½Ð¸Ðµ, Ð¿Ð¾Ñ‚Ð¾Ð¼ ÑƒÐ²ÐµÐ»Ð¸Ñ‡Ð¸Ð¼ Ð¿Ð¾Ð·Ð¸Ñ†Ð¸ÑŽ Ð½Ð°Ñ‡Ð°Ð»Ð° Ð¾Ñ‡ÐµÑ€ÐµÐ´Ð¸
 	return queue->queue[queue->start++];
 }
 

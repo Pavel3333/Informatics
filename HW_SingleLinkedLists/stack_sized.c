@@ -1,4 +1,4 @@
-#include <stdio.h>
+п»ї#include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
 
@@ -7,31 +7,31 @@ typedef struct node {
     struct node* next;
 } Node;
 
-// Структура стэка на односвязном списке
+// РЎС‚СЂСѓРєС‚СѓСЂР° СЃС‚СЌРєР° РЅР° РѕРґРЅРѕСЃРІСЏР·РЅРѕРј СЃРїРёСЃРєРµ
 typedef struct {
-    Node* head; // Первый элемент стека
+    Node* head; // РџРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ СЃС‚РµРєР°
     unsigned int size;
 } Stack;
 
-// Объявление
+// РћР±СЉСЏРІР»РµРЅРёРµ
 Stack* init_stack();
 void push(Stack* stack, int value);
 int pop(Stack* stack);
 void fini_stack(Stack* stack);
 
 Stack* init_stack() {
-    // Выделим память
+    // Р’С‹РґРµР»РёРј РїР°РјСЏС‚СЊ
     Stack* new_stack = (Stack*)malloc(sizeof(Stack));
     if (!new_stack) {
         printf("Unable to allocate the memory for the stack object\n");
         return NULL;
     }
 
-    // Стэк изначально пуст
+    // РЎС‚СЌРє РёР·РЅР°С‡Р°Р»СЊРЅРѕ РїСѓСЃС‚
     new_stack->head = NULL;
     new_stack->size = 0;
 
-    // TODO: имеет смысл использовать calloc вместо malloc (все значения нулевые)
+    // TODO: РёРјРµРµС‚ СЃРјС‹СЃР» РёСЃРїРѕР»СЊР·РѕРІР°С‚СЊ calloc РІРјРµСЃС‚Рѕ malloc (РІСЃРµ Р·РЅР°С‡РµРЅРёСЏ РЅСѓР»РµРІС‹Рµ)
 
     return new_stack;
 }
