@@ -101,10 +101,10 @@ bool is_operand(char* input, unsigned int size) {
 	return true;
 }
 
-int64_t operation_pow(int64_t number, unsigned short stepen) { //TODO: translate it!
+int64_t operation_pow(int64_t number, unsigned short degree) {
 	if (!number) return 0;
 
-	for (int i = 0; i < stepen; i++) {
+	for (int i = 0; i < degree; i++) {
 		number *= number;
 	}
 

@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-// Структура стэка
+// Структура очереди
 typedef struct {
 	unsigned int size;
 	unsigned int start;

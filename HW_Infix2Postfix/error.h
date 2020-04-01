@@ -1,0 +1,24 @@
+#pragma once
+
+enum ERR {
+    SUCCESS,
+
+    // main errors
+    MAIN_INIT_QUEUE,
+    MAIN_INIT_STACK,
+    MAIN_NOT_ENOUGH_BRACKETS,
+    MAIN_BRACKETS_NOT_CLOSED,
+    MAIN_UNKNOWN_BRACKET,
+    MAIN_UNKNOWN_TOKEN,
+
+    // queue errors
+    QUEUE_NULL_OBJECT,
+    QUEUE_EMPTY,
+    QUEUE_NEW_NODE,
+    QUEUE_DEL_NOT_FOUND,
+
+    // stack errors
+    STACK_NULL_OBJECT,
+    STACK_EMPTY,
+    STACK_NEW_NODE
+};
