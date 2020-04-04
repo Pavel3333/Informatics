@@ -142,13 +142,13 @@ int process_infix(char* infix) {
     out = init_queue();
     if (!out) {
         error = MAIN_INIT_QUEUE;
-        goto process_infix_ret;
+        goto ret;
     }
 
     stack = init_stack();
     if (!stack) {
         error = MAIN_INIT_STACK;
-        goto process_infix_ret1;
+        goto ret1;
     }
 
     char* ptr = infix;
@@ -158,7 +158,7 @@ int process_infix(char* infix) {
             buf[counter] = 0;
             if (counter) { // process if token is not empty
                 error = process_buf(buf, counter);
-                if (error) goto process_infix_ret2;
+                if (error) goto ret2;
             }
             counter = 0;
         }
@@ -176,21 +176,21 @@ int process_infix(char* infix) {
 
     while (!empty_stack(stack)) {
         error = pop_stack(stack, &buf_node);
-        if (error) goto process_infix_ret2;
+        if (error) goto ret2;
 
         if (buf_node.type == T_BRACKET) {
             error = MAIN_BRACKETS_NOT_CLOSED;
-            goto process_infix_ret2;
+            goto ret2;
         }
 
         error = push_queue(out, buf_node.value, buf_node.type);
-        if (error) goto process_infix_ret2;
+        if (error) goto ret2;
     }
 
     printf("Postfix expression: ");
     while (!empty_queue(out)) {
         error = pop_queue(out, &buf_node);
-        if (error) goto process_infix_ret2;
+        if (error) goto ret2;
 
         if (buf_node.type == T_OPERAND)
             printf("%lld ", buf_node.value);
@@ -201,11 +201,11 @@ int process_infix(char* infix) {
     }
     putc('\n', stdout);
 
-process_infix_ret2:
+ret2:
     fini_stack(stack);
-process_infix_ret1:
+ret1:
     fini_queue(out);
-process_infix_ret:
+ret:
     return error;
 }
 
