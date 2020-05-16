@@ -9,20 +9,22 @@
     if (!is_success(err)) {  \
         handle_error(err);   \
         if (is_error(err)) { \
-            puts(msg);     \
+            puts(msg);       \
             return err;      \
         }                    \
     }            
 
 #define NODE_COUNT 7
-const int   node_keys  [NODE_COUNT] = { 620, 550, 530, 563, 730, 658, 740};
+const int   node_keys  [NODE_COUNT] = { 620, 550, 530, 563, 730, 658, 740 };
 const Value node_values[NODE_COUNT] = { 111, 222, 333, 444, 555, 666, 777 };
 
 int main() {
     Error err = E_Success;
 
-    puts("Creating my own tree object...");
     BSTree *my_tree, *node;
+
+    puts("Creating my own tree object...");
+
     err = init_tree(500, 123, &my_tree);
     process_err("Oh godness my tree was not initialised =(")
 
@@ -48,17 +50,19 @@ int main() {
     err = min_node(my_tree, &node);
     process_err("Could not get min node =(");
 
-    printf("Minimal key of tree is: %d\n", node->key);
+    printf("Minimal key of tree is: ");
+    print_node(node);
 
     err = max_node(my_tree, &node);
     process_err("Could not get max node =(");
 
-    printf("Maximal key of tree is: %d\n", node->key);
+    printf("Maximal key of tree is: ");
+    print_node(node);
 
     puts("Let's delete the tree!");
     fini_tree(my_tree);
 
     puts("Tree deleted!");
 
-    return err;
+    return E_Success;
 }

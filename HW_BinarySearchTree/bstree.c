@@ -6,11 +6,11 @@
 
 /* internal functions, trading safety for speed */
 
-static BSTree** _far_node(BSTree* tree, uint8_t left) {
+static BSTree** _far_node(BSTree* tree, uint8_t is_left) {
     BSTree** node = &tree;
 
     while (*node) {
-        BSTree** next = left ? &((*node)->left) : &((*node)->right);
+        BSTree** next = is_left ? &((*node)->left) : &((*node)->right);
         if (!*next)
             break;
         node = next;
