@@ -2,9 +2,9 @@
 
 #include "interface.h"
 
-#include "io.h";
-#include "node.h";
-#include "error.h";
+#include "io.h"
+#include "node.h"
+#include "error.h"
 
 const char* CommandDesc[C_SIZE] = {
     "Print commands",

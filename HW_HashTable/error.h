@@ -19,6 +19,13 @@ typedef enum {
     E_MemoryAlloc,
     E_InvalidStudentFields
 } Error;
-static_assert(E_Success == 0, "Invalid enum declaration; please check start number");
+
+#if _WIN32
+#define my_static_assert static_assert
+#else
+#define my_static_assert _Static_assert
+#endif
+
+my_static_assert(E_Success == 0, "Invalid enum declaration; please check start number");
 
 void handle_error(Error err);

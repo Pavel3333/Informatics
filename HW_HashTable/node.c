@@ -5,6 +5,7 @@
 #include "node.h"
 
 #include "io.h"
+#include "interface.h"
 
 const char* GenderDesc[G_SIZE] = {
     "Man",

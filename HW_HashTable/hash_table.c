@@ -63,9 +63,9 @@ Error hashTableAddStudent(Node* hash_table[HASH_TABLE_SIZE], Student* student) {
     strcat_s(new_node->key, key_size, " ");
     strcat_s(new_node->key, key_size, student->last_name);
 #else
-    strcat(new_node->key, first_name);
+    strcat(new_node->key, student->first_name);
     strcat(new_node->key, " ");
-    strcat(new_node->key, last_name);
+    strcat(new_node->key, student->last_name);
 #endif
 
     new_node->student = *student;
@@ -193,7 +193,7 @@ Error hashTableLoad(Node* hash_table[HASH_TABLE_SIZE], const char* path) {
     if (io_err)
         return W_FileNotOpened;
 #else
-    FILE* hash_table_file = fopen(path, "rb");
+    hash_table_file = fopen(path, "rb");
     if (!hash_table_file)
         return W_FileNotOpened;
 #endif
@@ -236,7 +236,7 @@ Error hashTableDump(Node* hash_table[HASH_TABLE_SIZE], const char* path) {
     if (io_err)
         return W_FileNotOpened;
 #else
-    FILE* hash_table_file = fopen(path, "wb");
+    hash_table_file = fopen(path, "wb");
     if (!hash_table_file)
         return W_FileNotOpened;
 #endif

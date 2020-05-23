@@ -1,6 +1,6 @@
 #pragma once
 
-#include "hash_table.h";
+#include "hash_table.h"
 
 #define BUFFER_SIZE 256
 
